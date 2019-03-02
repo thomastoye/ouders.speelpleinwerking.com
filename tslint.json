@@ -1,5 +1,8 @@
 {
-  "extends": "tslint:recommended",
+  "extends": [
+    "tslint:recommended",
+    "tslint-immutable"
+  ],
   "rulesDirectory": [
     "codelyzer"
   ],
@@ -70,6 +73,14 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "readonly-array": true,
+    "readonly-keyword": [true, "ignore-class"],
+    "no-let": true,
+    "no-object-mutation": true,
+    "no-delete": true,
+    "no-loop-statement": true,
+    "no-mixed-interface": true,
+    "no-try": true
   }
 }

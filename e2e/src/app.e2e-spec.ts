@@ -1,6 +1,7 @@
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
+/* tslint:disable:no-let */
 describe('workspace-project App', () => {
   let page: AppPage;
 
