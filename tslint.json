@@ -77,7 +77,7 @@
     "readonly-array": true,
     "readonly-keyword": [true, "ignore-class"],
     "no-let": true,
-    "no-object-mutation": true,
+    "no-object-mutation": [true, {"ignore-prefix": "this"}],
     "no-delete": true,
     "no-loop-statement": true,
     "no-mixed-interface": true,
