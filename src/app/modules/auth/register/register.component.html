@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutAlign="center start">
+  <mat-card class="register-card">
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <div fxLayout="column" fxLayoutAlign="start stretch">
+        <h1>Registreren</h1>
+
+        <p>
+          Heb je al een account? Dan kan je <a [routerLink]="['/login']">hier</a> inloggen.
+        </p>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Emailadres</mat-label>
+          <input matInput formControlName="email" placeholder="Emailadres">
+          <mat-error>Ongeldig emailadres</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Wachtwoord</mat-label>
+          <input matInput formControlName="password" type="password" placeholder="Wachtwoord">
+          <mat-error>Wachtwoord is verplicht</mat-error>
+        </mat-form-field>
+
+        <button mat-button [disabled]="registerForm.invalid" type="submit" color="primary" class="register-button">REGISTREREN</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

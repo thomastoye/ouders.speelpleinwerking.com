@@ -8,6 +8,7 @@ import { NavComponent } from './app-components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     LayoutModule,
     FlexLayoutModule,
+    AuthModule,
 
     MatToolbarModule,
     MatButtonModule,
