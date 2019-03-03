@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+@mixin auth-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .warn-well {
+    margin: 10px;
+    padding: 15px;
+
+    background-color: mat-color($warn);
+    color: mat-color($primary, lighter-contrast);
+  }
+
+  .success-well {
+    margin: 10px;
+    padding: 15px;
+
+    background-color: mat-color($background);
+    color: mat-color($primary, lighter-contrast);
+  }
+}

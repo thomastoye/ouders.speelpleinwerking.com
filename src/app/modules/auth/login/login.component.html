@@ -22,6 +22,10 @@
 
         <a [routerLink]="['/wachtwoord-vergeten']" class="forgot-password-link mat-small">Wachtwoord vergeten</a>
 
+        <div *ngIf="error" class="warn-well">
+          {{ error }}
+        </div>
+
         <button mat-button [disabled]="loginForm.invalid" type="submit" color="primary" class="login-button">INLOGGEN</button>
       </div>
     </form>

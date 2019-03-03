@@ -20,6 +20,10 @@
           <mat-error>Wachtwoord is verplicht</mat-error>
         </mat-form-field>
 
+        <div *ngIf="error" class="warn-well">
+          {{ error }}
+        </div>
+
         <button mat-button [disabled]="registerForm.invalid" type="submit" color="primary" class="register-button">REGISTREREN</button>
       </div>
     </form>

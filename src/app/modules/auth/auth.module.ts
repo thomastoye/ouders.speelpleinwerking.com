@@ -7,6 +7,7 @@ import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, Mat
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [

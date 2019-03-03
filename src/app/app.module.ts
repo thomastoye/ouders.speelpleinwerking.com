@@ -9,6 +9,9 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthModule } from './modules/auth/auth.module';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { AuthModule } from './modules/auth/auth.module';
     BrowserAnimationsModule,
     LayoutModule,
     FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+
     AuthModule,
 
     MatToolbarModule,
