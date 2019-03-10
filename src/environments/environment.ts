@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyA9UTskrrrRziIewB_F5v-Hq79_eHviVfU',
-    authDomain: 'hoepel-app.firebaseapp.com',
-    databaseURL: 'https://hoepel-app.firebaseio.com',
-    projectId: 'hoepel-app',
-    storageBucket: 'hoepel-app.appspot.com',
-    messagingSenderId: '890958670032'
+    apiKey: "AIzaSyBxzZF7v077oDe4GoNqX2PmxGpb10e2ePk",
+    authDomain: "speelpleinwerking-com.firebaseapp.com",
+    databaseURL: "https://speelpleinwerking-com.firebaseio.com",
+    projectId: "speelpleinwerking-com",
+    storageBucket: "speelpleinwerking-com.appspot.com",
+    messagingSenderId: "293558347813"
   }
 };
 
