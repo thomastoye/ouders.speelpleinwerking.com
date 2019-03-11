@@ -14,4 +14,8 @@ export class PlaygroundsService {
   listPlaygrounds(): Observable<ReadonlyArray<Tenant>> {
     return this.apiService.getHoepelAppRoute<ReadonlyArray<Tenant>>('listOrganisations');
   }
+
+  details(playgroundId: string): Observable<Tenant | null> {
+    return this.apiService.getHoepelAppRoute<Tenant | null>('organisationDetails', { id: playgroundId });
+  }
 }

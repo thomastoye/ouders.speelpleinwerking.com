@@ -12,11 +12,11 @@ export class ApiService {
     private angularFireAuth: AngularFireAuth,
   ) {}
 
-  getHoepelAppRoute<T>(functionName: string): Observable<T> {
+  getHoepelAppRoute<T>(functionName: string, extraData?: object): Observable<T> {
     return this.angularFireAuth.idToken.pipe(
       first(),
       flatMap((token) => {
-        return this.http.post(`https://europe-west1-hoepel-app.cloudfunctions.net/${functionName}`, {data: { token }}, {
+        return this.http.post(`https://europe-west1-hoepel-app.cloudfunctions.net/${functionName}`, {data: { token, ...extraData }}, {
           headers: {
             'Content-Type': 'application/json',
           }
