@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registreren', component: RegisterComponent },
   { path: 'wachtwoord-vergeten', component: ForgotPasswordComponent },
+  { path: 'speelpleinen', loadChildren: './modules/playgrounds/playgrounds.module#PlaygroundsModule' }
 ];
 
 @NgModule({
