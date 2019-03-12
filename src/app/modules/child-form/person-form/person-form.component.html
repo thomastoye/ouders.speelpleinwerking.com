@@ -1,0 +1,212 @@
+<form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+
+  <!-- Needed to capture form submit events (e.g. pressing enter to submit form) -->
+  <button type="submit" class="hidden-submit"></button>
+
+
+  <div class="mb-16" *ngIf="showField('remarks')">
+    <span class="mat-title m-0">Naam</span>
+  </div>
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutAlign.xs="start stretch">
+    <mat-form-field appearance="outline" fxFlex="50" ngClass.gt-xs="pr-12">
+      <mat-label>Voornaam</mat-label>
+      <mat-icon matSuffix class="secondary-text" svgIcon="account-circle"></mat-icon>
+      <input name="firstName" formControlName="firstName" matInput required #firstName>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="50">
+      <mat-label>Familienaam</mat-label>
+      <input name="lastName" formControlName="lastName" matInput required #lastName>
+    </mat-form-field>
+  </div>
+
+  <div class="mb-16" *ngIf="showField('address')">
+    <span class="mat-title m-0">Adres</span>
+  </div>
+
+  <div formGroupName="address" *ngIf="showField('address')">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutAlign.xs="start stretch">
+      <mat-form-field appearance="outline" fxFlex="70" ngClass.gt-xs="pr-12">
+        <mat-label>Straat</mat-label>
+        <mat-icon matSuffix class="secondary-text" svgIcon="home"></mat-icon>
+        <input name="street" formControlName="street" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="30">
+        <mat-label>Nummer</mat-label>
+        <mat-icon matSuffix class="secondary-text" svgIcon="numeric"></mat-icon>
+        <input name="number" formControlName="number" matInput>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutAlign.xs="start stretch">
+      <mat-form-field appearance="outline" fxFlex="30" ngClass.gt-xs="pr-12">
+        <mat-label>Postcode</mat-label>
+        <input name="zipCode" formControlName="zipCode" type="number" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="70">
+        <mat-label>Stad</mat-label>
+        <mat-icon matSuffix class="secondary-text" svgIcon="city-variant-outline"></mat-icon>
+        <input name="city" formControlName="city" matInput>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="mb-16" *ngIf="showField('birthDate') || showField('bankAccount') || showField('yearStarted') || showField('active') || showField('gender')">
+    <span class="mat-title m-0">Informatie</span>
+  </div>
+
+  <div formGroupName="birthDate" *ngIf="showField('birthDate')">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutAlign.xs="start stretch">
+      <mat-form-field appearance="outline" fxFlex="30" ngClass.gt-xs="pr-12">
+        <mat-label>Dag</mat-label>
+        <input name="day" formControlName="day" type="number" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="30" ngClass.gt-xs="pr-12">
+        <mat-label>Maand</mat-label>
+        <input name="month" formControlName="month" type="number" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="40">
+        <mat-label>Jaar</mat-label>
+        <input name="year" formControlName="year" type="number" matInput>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start start" *ngIf="showField('bankAccount')">
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Bankrekening</mat-label>
+      <mat-icon matSuffix class="secondary-text" svgIcon="bank"></mat-icon>
+      <input name="bankAccount" formControlName="bankAccount" matInput>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start start" *ngIf="showField('yearStarted')">
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Gestart in jaar</mat-label>
+      <mat-icon matSuffix class="secondary-text" svgIcon="calendar-outline"></mat-icon>
+      <input name="yearStarted" formControlName="yearStarted" type="number" matInput>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start start" *ngIf="showField('active')">
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Actief</mat-label>
+
+      <mat-select formControlName="active">
+        <mat-option [value]="true">Persoon is actief</mat-option>
+        <mat-option [value]="false">Persoon is niet meer actief</mat-option>
+      </mat-select>
+
+      <mat-icon matSuffix class="secondary-text" svgIcon="sleep"></mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start start" *ngIf="showField('gender')">
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Geslacht</mat-label>
+
+      <mat-select formControlName="gender">
+        <mat-option [value]="null">
+          <mat-icon class="secondary-text" svgIcon="help"></mat-icon>
+          Onbekend
+        </mat-option>
+        <mat-option value="male">
+          <mat-icon class="secondary-text" svgIcon="gender-male"></mat-icon>
+          Man
+        </mat-option>
+        <mat-option value="female">
+          <mat-icon class="secondary-text" svgIcon="gender-female"></mat-icon>
+          Vrouw
+        </mat-option>
+        <mat-option value="other">
+          <mat-icon class="secondary-text" svgIcon="gender-transgender"></mat-icon>
+          Anders
+        </mat-option>
+      </mat-select>
+
+      <mat-icon class="secondary-text" svgIcon="gender-male-female" *ngIf="!form.get('gender').value"></mat-icon>
+      <mat-icon class="secondary-text" svgIcon="gender-male" *ngIf="form.get('gender').value === 'male'"></mat-icon>
+      <mat-icon class="secondary-text" svgIcon="gender-female" *ngIf="form.get('gender').value === 'female'"></mat-icon>
+      <mat-icon class="secondary-text" svgIcon="gender-transgender" *ngIf="form.get('gender').value === 'other'"></mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div class="mb-16" fxLayout="row" fxLayoutAlign="start center" *ngIf="showField('phone') || showField('email')">
+    <span class="mat-title m-0">Contact</span>
+    <button mat-icon-button class="ml-20" (click)="addPhoneNumber()" *ngIf="showField('phone')" type="button">
+      <mat-icon svgIcon="phone-plus"></mat-icon>
+    </button>
+    <button mat-icon-button class="ml-12" (click)="addEmail()" *ngIf="showField('email')" type="button">
+      <mat-icon svgIcon="email-plus-outline"></mat-icon>
+    </button>
+  </div>
+
+  <div formArrayName="phone" *ngIf="showField('phone')">
+    <div fxLayout="row" fxLayoutAlign="start start"
+         fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch"
+         *ngFor="let phoneNumber of phoneFormArray.controls; let i=index"
+         [formGroupName]="i">
+
+      <div fxHide.gt-sm fxFlex class="pb-12">
+        <span class="mat-subheading-2">Telefoonnummer {{ i + 1 }}</span>
+
+        <button mat-icon-button class="pl-8" (click)="deletePhoneNumber(i)" type="button">
+          <mat-icon svgIcon="delete-outline"></mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start start"
+           fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" fxFlex.lt-md="auto"
+           fxFlex>
+
+        <mat-form-field appearance="outline" fxFlex="50" ngClass.gt-sm="pr-12">
+          <mat-label>Telefoonnummer</mat-label>
+          <input name="day" formControlName="phoneNumber" type="text" matInput>
+          <mat-icon matSuffix class="secondary-text" svgIcon="phone"></mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="50" ngClass.gt-sm="pr-12">
+          <mat-label>Opmerking (bv. "Telefoon werk")</mat-label>
+          <input name="comment" formControlName="comment" type="text" matInput>
+          <mat-icon matSuffix class="secondary-text" svgIcon="comment-text"></mat-icon>
+        </mat-form-field>
+      </div>
+
+      <button mat-icon-button fxHide.lt-md fxFlex.gt-sm="20px" class="pt-16" (click)="deletePhoneNumber(i)" type="button">
+        <mat-icon svgIcon="delete-outline"></mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div formArrayName="email" *ngIf="showField('email')">
+    <div fxLayout="row" fxLayoutAlign="start start" *ngFor="let phoneNumber of emailFormArray.controls; let i=index">
+      <mat-form-field appearance="outline" fxFlex class="pr-12">
+        <mat-label>Emailadres</mat-label>
+        <input name="day" [formControlName]="i" type="email" matInput>
+        <mat-icon matSuffix class="secondary-text" svgIcon="email-outline"></mat-icon>
+      </mat-form-field>
+
+      <button mat-icon-button class="pt-16" (click)="deleteEmail(i)" fxFlex="20px" type="button">
+        <mat-icon svgIcon="delete-outline"></mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="mb-16" *ngIf="showField('remarks')">
+    <span class="mat-title m-0">Opmerkingen</span>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start start" *ngIf="showField('remarks')">
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Opmerkingen</mat-label>
+      <mat-icon matSuffix class="secondary-text" svgIcon="comment-text"></mat-icon>
+      <textarea name="remarks" formControlName="remarks" matInput cdkTextareaAutosize type="text"></textarea>
+    </mat-form-field>
+  </div>
+
+</form>
