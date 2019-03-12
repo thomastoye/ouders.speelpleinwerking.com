@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { ErrorHandler, Injectable, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import * as Sentry from '@sentry/browser';
 import { NavModule } from './modules/nav/nav.module';
+import { MatIconModule, MatIconRegistry } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 Sentry.init({
   dsn: 'https://c71ef13256fa486bada4f4c609b3fbe5@sentry.io/1411998'
@@ -42,8 +44,15 @@ export class SentryErrorHandler implements ErrorHandler {
 
     AuthModule,
     NavModule,
+
+    HttpClientModule,
+    MatIconModule,
   ],
   providers: [{ provide: ErrorHandler, useClass: SentryErrorHandler }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
+    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/mdi.svg'));
+  }
+}
