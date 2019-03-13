@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlaygroundsOverviewComponent } from './playgrounds-overview/playgrounds-overview.component';
 import { DataAccessModule } from '../data-access/data-access.module';
 import { PlaygroundCardComponent } from './playground-card/playground-card.component';
-import { MatButtonModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatProgressSpinnerModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [
@@ -25,6 +25,7 @@ const routes: Routes = [
 
     MatCardModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class PlaygroundsModule { }

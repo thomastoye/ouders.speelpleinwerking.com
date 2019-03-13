@@ -1,3 +1,11 @@
+h1 {
+  margin-top: 40px;
+}
+
 app-playground-card {
   display: inline-block;
+}
+
+.wrapper :last-child {
+  margin-bottom: 50px;
 }

@@ -1,5 +1,11 @@
-<h1>Speelpleinen</h1>
+<div fxLayout="column" fxLayoutAlign="start center" class="wrapper">
+  <h1>Speelpleinen</h1>
 
-<div fxLayout="column" fxLayoutAlign="start center">
-  <app-playground-card [playground]="playground" *ngFor="let playground of (playgrounds$ | async)"></app-playground-card>
+  <div fxLayout="column" fxLayoutAlign="start start" *ngIf="playgrounds$ | async; let playgrounds; else loading">
+    <app-playground-card [playground]="playground" *ngFor="let playground of sort(playgrounds)"></app-playground-card>
+  </div>
+
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 </div>

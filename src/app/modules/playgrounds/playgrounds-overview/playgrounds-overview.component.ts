@@ -19,4 +19,11 @@ export class PlaygroundsOverviewComponent implements OnInit {
     this.playgrounds$ = this.playgroundService.listPlaygrounds();
   }
 
+  sort(playgrounds: ReadonlyArray<Tenant>) {
+    if (!playgrounds) {
+      return [];
+    }
+
+    return [ ...playgrounds ].sort((a, b) => a.id.localeCompare(b.id));
+  }
 }
