@@ -24,7 +24,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
-    "@hoepel.app/types": "^1.1.11",
+    "@hoepel.app/types": "^1.1.13",
     "@mdi/angular-material": "^3.5.95",
     "@sentry/browser": "^4.6.4",
     "core-js": "^2.5.4",
