@@ -5,6 +5,7 @@
                [opened]="!(isHandset$ | async)">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+      <a mat-list-item [routerLink]="['/']">Home</a>
       <a mat-list-item [routerLink]="['/speelpleinen']">Speelpleinen</a>
     </mat-nav-list>
   </mat-sidenav>

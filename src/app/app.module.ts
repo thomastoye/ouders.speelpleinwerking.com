@@ -1,6 +1,5 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { ErrorHandler, Injectable, NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -14,6 +13,11 @@ import * as Sentry from '@sentry/browser';
 import { NavModule } from './modules/nav/nav.module';
 import { MatIconModule, MatIconRegistry } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './modules/auth/login/login.component';
+import { RegisterComponent } from './modules/auth/register/register.component';
+import { ForgotPasswordComponent } from './modules/auth/forgot-password/forgot-password.component';
+import { LoggedInGuard } from './logged-in.guard';
 
 Sentry.init({
   dsn: 'https://c71ef13256fa486bada4f4c609b3fbe5@sentry.io/1411998'
@@ -29,13 +33,20 @@ export class SentryErrorHandler implements ErrorHandler {
   }
 }
 
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'registreren', component: RegisterComponent },
+  { path: 'wachtwoord-vergeten', component: ForgotPasswordComponent },
+  { path: 'speelpleinen', loadChildren: './modules/playgrounds/playgrounds.module#PlaygroundsModule', canActivate: [ LoggedInGuard ] },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     LayoutModule,
     FlexLayoutModule,
