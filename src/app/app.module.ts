@@ -18,6 +18,8 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { ForgotPasswordComponent } from './modules/auth/forgot-password/forgot-password.component';
 import { LoggedInGuard } from './logged-in.guard';
+import { HomeComponent } from './modules/home/home/home.component';
+import { HomeModule } from './modules/home/home.module';
 
 Sentry.init({
   dsn: 'https://c71ef13256fa486bada4f4c609b3fbe5@sentry.io/1411998'
@@ -34,6 +36,7 @@ export class SentryErrorHandler implements ErrorHandler {
 }
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registreren', component: RegisterComponent },
   { path: 'wachtwoord-vergeten', component: ForgotPasswordComponent },
@@ -54,6 +57,7 @@ const routes: Routes = [
     AngularFireAuthModule,
 
     AuthModule,
+    HomeModule,
     NavModule,
 
     HttpClientModule,
