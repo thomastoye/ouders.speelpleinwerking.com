@@ -5,6 +5,7 @@ import { PlaygroundsOverviewComponent } from './playgrounds-overview/playgrounds
 import { DataAccessModule } from '../data-access/data-access.module';
 import { PlaygroundCardComponent } from './playground-card/playground-card.component';
 import { MatButtonModule, MatCardModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [
   { path: '', component: PlaygroundsOverviewComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     DataAccessModule,
+    FlexLayoutModule,
 
     MatCardModule,
     MatButtonModule,

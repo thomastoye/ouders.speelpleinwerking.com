@@ -1,3 +1,5 @@
 <h1>Speelpleinen</h1>
 
-<app-playground-card [playground]="playground" *ngFor="let playground of (playgrounds$ | async)"></app-playground-card>
+<div fxLayout="column" fxLayoutAlign="start center">
+  <app-playground-card [playground]="playground" *ngFor="let playground of (playgrounds$ | async)"></app-playground-card>
+</div>
