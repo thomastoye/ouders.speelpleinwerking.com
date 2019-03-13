@@ -8,7 +8,7 @@ import { MatButtonModule, MatCardModule } from '@angular/material';
 
 const routes: Routes = [
   { path: '', component: PlaygroundsOverviewComponent },
-  { path: ':id', loadChildren: '../playground-details/playground-details.module#PlaygroundDetailsModule' },
+  { path: ':playgroundId', loadChildren: '../playground-details/playground-details.module#PlaygroundDetailsModule' },
 ];
 
 @NgModule({

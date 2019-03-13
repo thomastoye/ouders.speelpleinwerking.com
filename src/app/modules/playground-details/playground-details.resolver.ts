@@ -11,6 +11,6 @@ export class PlaygroundDetailsResolver implements Resolve<Tenant> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Tenant> {
-    return this.playgroundService.details(route.params.id);
+    return this.playgroundService.details(route.params.playgroundId);
   }
 }

@@ -11,6 +11,6 @@ export class ChildrenOnPlaygroundResolver implements Resolve<ReadonlyArray<Child
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ReadonlyArray<Child>> {
-    return this.childrenService.getChildrenForPlayground(route.params.id);
+    return this.childrenService.getChildrenForPlayground(route.params.playgroundId);
   }
 }

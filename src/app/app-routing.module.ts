@@ -9,7 +9,6 @@ const routes: Routes = [
   { path: 'registreren', component: RegisterComponent },
   { path: 'wachtwoord-vergeten', component: ForgotPasswordComponent },
   { path: 'speelpleinen', loadChildren: './modules/playgrounds/playgrounds.module#PlaygroundsModule' },
-  { path: 'kinderen', loadChildren: './modules/children/children.module#ChildrenModule' },
 ];
 
 @NgModule({

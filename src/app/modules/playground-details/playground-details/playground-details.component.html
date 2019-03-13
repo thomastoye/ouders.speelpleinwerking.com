@@ -35,15 +35,28 @@
         <mat-divider></mat-divider>
         <div *ngFor="let child of children">
           <mat-list-item>
-            <button mat-icon-button class="edit-button"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button class="edit-button" (click)="editChild(child)"><mat-icon>edit</mat-icon></button>
             {{ child.firstName }} {{ child.lastName }}
           </mat-list-item>
           <mat-divider></mat-divider>
         </div>
       </mat-list>
+
+      <div *ngIf="saving$ | async" fxLayout="row" fxLayoutAlign="start center">
+        <mat-spinner diameter="20"></mat-spinner>
+        <p class="info-text">
+          Bezig met opslaan...
+        </p>
+      </div>
+
+      <div *ngIf="error$ | async" fxLayout="row" fxLayoutAlign="start center">
+        <p class="info-text">
+          Er ging iets mis... Probeer het later opnieuw.
+        </p>
+      </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>
+      <button mat-button (click)="createChild()">
         <mat-icon>add</mat-icon>
         KIND TOEVOEGEN
       </button>
