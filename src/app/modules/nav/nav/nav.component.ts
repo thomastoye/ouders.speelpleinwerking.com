@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -23,6 +24,7 @@ export class NavComponent implements OnInit, OnDestroy {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private auth: AuthService,
+    private router: Router,
   ) {
 
   }
@@ -37,5 +39,6 @@ export class NavComponent implements OnInit, OnDestroy {
 
   logout() {
     this.auth.logout();
+    this.router.navigate(['/']);
   }
 }

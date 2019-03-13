@@ -22,20 +22,25 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      email: [ '', [ Validators.required, Validators.email ] ],
-      password: [ '', [ Validators.required ] ],
+      email: ['', [Validators.required, Validators.email]],
+      displayName: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      acceptPrivacyPolicy: ['', [Validators.requiredTrue]],
+      acceptTerms: ['', [Validators.requiredTrue]],
     });
   }
 
   submit() {
     if (this.registerForm.valid) {
-      this.auth.register(this.registerForm.value.email, this.registerForm.value.password).then(credential => {
-        this.router.navigate(['/']);
-      }).catch(err => {
+      this.auth.register(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.displayName)
+        .then(credential => {
+          this.router.navigate(['/']);
+        }).catch(err => {
         console.error('Error while registering user', err);
 
         if (this.commonCodes[err.code]) {

@@ -16,8 +16,10 @@ export class AuthService {
     return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  register(email: string, password: string): Promise<UserCredential> {
-    return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password);
+  register(email: string, password: string, displayName: string): Promise<void> {
+    return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password).then(user => {
+      return user.user.updateProfile({ displayName });
+    });
   }
 
   sendPasswordReset(email: string): Promise<void> {

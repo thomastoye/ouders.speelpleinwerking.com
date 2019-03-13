@@ -15,10 +15,20 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
+          <mat-label>(Volledige) naam</mat-label>
+          <input matInput formControlName="displayName" placeholder="(Volledige) naam">
+          <mat-error>Ongeldig naam</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
           <mat-label>Wachtwoord</mat-label>
           <input matInput formControlName="password" type="password" placeholder="Wachtwoord">
           <mat-error>Wachtwoord is verplicht</mat-error>
         </mat-form-field>
+
+        <mat-checkbox formControlName="acceptPrivacyPolicy">Ik aanvaard de <a href="https://www.hoepel.app/privacy">privacyverklaring</a></mat-checkbox>
+
+        <mat-checkbox formControlName="acceptTerms">Ik aanvaard de <a href="https://www.hoepel.app/voorwaarden">gebruiksvoorwaarden</a></mat-checkbox>
 
         <div *ngIf="error" class="warn-well">
           {{ error }}

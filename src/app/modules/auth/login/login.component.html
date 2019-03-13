@@ -21,6 +21,7 @@
         </mat-form-field>
 
         <a [routerLink]="['/wachtwoord-vergeten']" class="forgot-password-link mat-small">Wachtwoord vergeten</a>
+        <a [routerLink]="['/registreren']" class="no-account-link mat-small">Nog geen account</a>
 
         <div *ngIf="error" class="warn-well">
           {{ error }}
