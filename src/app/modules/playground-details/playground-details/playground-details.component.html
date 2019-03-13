@@ -1,16 +1,16 @@
 <div class="wrapper" fxLayout="column" fxLayoutAlign="start center" >
   <mat-card class="playground-details-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <div mat-card-avatar class="playground-header-image"
+           *ngIf="playground.logoSmallUrl"
+           [ngStyle]="{ 'background-image': 'url(' + playground.logoSmallUrl + ')' }"
+      ></div>
       <mat-card-title>{{ playground.name }}</mat-card-title>
       <mat-card-subtitle>{{ playground?.address?.city }}</mat-card-subtitle>
     </mat-card-header>
-    <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
     <mat-card-content>
       <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
+        {{ playground.description }}
       </p>
     </mat-card-content>
   </mat-card>
@@ -20,7 +20,6 @@
       <mat-card-title>Kinderen</mat-card-title>
       <mat-card-subtitle>Registreer kinderen voor {{ playground.name }}</mat-card-subtitle>
     </mat-card-header>
-    <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
     <mat-card-content>
       <p>
         Voor je kinderen kunnen deelnemen aan het speelplein, vragen we je om ze te registreren. Voeg ze hier toe, zo
