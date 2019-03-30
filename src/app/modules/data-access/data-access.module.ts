@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { FirestoreSettingsToken } from '@angular/fire/firestore';
+import { TokenInterceptor } from './token.interceptor';
+import { API_BASE_URL } from './injection-tokens';
 
 @NgModule({
   declarations: [],
@@ -12,7 +13,8 @@ import { FirestoreSettingsToken } from '@angular/fire/firestore';
     AngularFireAuthModule,
   ],
   providers: [
-    { provide: FirestoreSettingsToken, useValue: {} },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: API_BASE_URL, useValue: 'https://europe-west1-hoepel-app.cloudfunctions.net/api/speelpleinwerking.com' }
 ]
 })
 export class DataAccessModule { }

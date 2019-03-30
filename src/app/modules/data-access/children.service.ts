@@ -1,30 +1,36 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { DataAccessModule } from './data-access.module';
 import { Observable } from 'rxjs';
-import { Child, IChild } from '@hoepel.app/types';
-import { ApiService } from './api.service';
+import { Child } from '@hoepel.app/types';
 import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { API_BASE_URL } from './injection-tokens';
 
 @Injectable({providedIn: DataAccessModule})
 export class ChildrenService {
+  private readonly apiBase: string;
+
   constructor(
-    private apiService: ApiService,
+    private http: HttpClient,
+    private injector: Injector,
   ) {
+    this.apiBase = this.injector.get(API_BASE_URL);
   }
 
   /**
    * Get children managed by the current user belonging to the organisation with the given id
    */
-  getChildrenForPlayground(playgroundId: string): Observable<ReadonlyArray<Child>> {
-    return this.apiService.getHoepelAppRoute<ReadonlyArray<IChild>>('childrenManagedByParent', {organisationId: playgroundId})
+  getChildrenForPlayground(organisationId: string): Observable<ReadonlyArray<Child>> {
+    return this.http
+      .get<ReadonlyArray<Child>>(`${this.apiBase}/organisation/${organisationId}/children/managed-by/me`)
       .pipe(map(list => list.map(ichild => new Child(ichild))));
   }
 
-  updateChildInPlayground(playgroundId: string, childId: string, child: Child): Observable<void> {
-    return this.apiService.getHoepelAppRoute<void>('updateChildByParent', { organisationId: playgroundId, childId, child });
+  updateChildInPlayground(organisationId: string, childId: string, child: Child): Observable<void> {
+    return this.http.put<void>(`${this.apiBase}/organisation/${organisationId}/children/${childId}`, { child });
   }
 
-  createChildInPlayground(playgroundId: string, child: Child): Observable<void> {
-    return this.apiService.getHoepelAppRoute<void>('createChildByParent', { organisationId: playgroundId, child });
+  createChildInPlayground(organisationId: string, child: Child): Observable<void> {
+    return this.http.post<void>(`${this.apiBase}/organisation/${organisationId}/children/`, { child });
   }
 }
