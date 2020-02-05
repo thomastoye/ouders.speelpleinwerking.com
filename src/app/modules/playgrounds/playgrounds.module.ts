@@ -9,7 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [
   { path: '', component: PlaygroundsOverviewComponent },
-  { path: ':playgroundId', loadChildren: () => import('../playground-details/playground-details.module').then(m => m.PlaygroundDetailsModule) },
+  { path: ':playgroundId', loadChildren: '../playground-details/playground-details.module#PlaygroundDetailsModule' },
 ];
 
 @NgModule({
