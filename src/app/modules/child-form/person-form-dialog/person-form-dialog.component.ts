@@ -11,7 +11,7 @@ import {PersonFormComponent} from '../person-form/person-form.component';
   encapsulation: ViewEncapsulation.None, // needed for css (panelClass of dialog) - could also include this in a global scss file
 })
 export class PersonFormDialogComponent implements OnInit {
-  @ViewChild(PersonFormComponent) form;
+  @ViewChild(PersonFormComponent, { static: true }) form;
 
   person: IChild | ICrew | IContactPerson;
   type: 'child' | 'crew' | 'contact-person';

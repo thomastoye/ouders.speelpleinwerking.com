@@ -12,18 +12,18 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^7.2.16",
+    "@angular/animations": "^8.2.14",
     "@angular/cdk": "^7.3.7",
-    "@angular/common": "^7.2.16",
-    "@angular/compiler": "^7.2.16",
-    "@angular/core": "^7.2.16",
+    "@angular/common": "^8.2.14",
+    "@angular/compiler": "^8.2.14",
+    "@angular/core": "^8.2.14",
     "@angular/fire": "^5.4.2",
     "@angular/flex-layout": "^7.0.0-beta.24",
-    "@angular/forms": "^7.2.16",
+    "@angular/forms": "^8.2.14",
     "@angular/material": "^7.3.7",
-    "@angular/platform-browser": "^7.2.16",
-    "@angular/platform-browser-dynamic": "^7.2.16",
-    "@angular/router": "^7.2.16",
+    "@angular/platform-browser": "^8.2.14",
+    "@angular/platform-browser-dynamic": "^8.2.14",
+    "@angular/router": "^8.2.14",
     "@hoepel.app/types": "1.1.13",
     "@mdi/angular-material": "^3.9.97",
     "@sentry/browser": "^4.6.6",
@@ -33,13 +33,13 @@
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "tslint-immutable": "^5.5.2",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.9",
     "@angular/cli": "^7.3.9",
-    "@angular/compiler-cli": "^7.2.16",
-    "@angular/language-service": "^7.2.16",
+    "@angular/compiler-cli": "^8.2.14",
+    "@angular/language-service": "^8.2.14",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "~8.9.4",
@@ -55,7 +55,7 @@
     "protractor": "^5.4.3",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "typescript": "~3.5.3"
   },
   "husky": {
     "hooks": {
