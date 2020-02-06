@@ -11,7 +11,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import * as Sentry from '@sentry/browser';
 import { NavModule } from './modules/nav/nav.module';
-import { MatIconModule, MatIconRegistry } from '@angular/material';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/auth/login/login.component';

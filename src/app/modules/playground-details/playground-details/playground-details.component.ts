@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tenant, Child } from '@hoepel.app/types';
 import { PersonFormDialogComponent } from '../../child-form/person-form-dialog/person-form-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ChildrenService } from '../../data-access/children.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

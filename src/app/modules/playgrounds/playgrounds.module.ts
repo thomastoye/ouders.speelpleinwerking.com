@@ -4,7 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlaygroundsOverviewComponent } from './playgrounds-overview/playgrounds-overview.component';
 import { DataAccessModule } from '../data-access/data-access.module';
 import { PlaygroundCardComponent } from './playground-card/playground-card.component';
-import { MatButtonModule, MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [

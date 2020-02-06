@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Subject} from 'rxjs';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {ContactPerson, IChild, IContactPerson, ICrew, Crew, Child} from '@hoepel.app/types';
 import {PersonFormComponent} from '../person-form/person-form.component';
 

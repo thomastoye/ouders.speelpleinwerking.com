@@ -4,15 +4,13 @@ import { PlaygroundDetailsComponent } from './playground-details/playground-deta
 import { RouterModule, Routes } from '@angular/router';
 import { PlaygroundDetailsResolver } from './playground-details.resolver';
 import { DataAccessModule } from '../data-access/data-access.module';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatIconModule,
-  MatListModule,
-  MatProgressSpinnerModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChildrenOnPlaygroundResolver } from './children-on-playground.resolver';
 import { ChildFormModule } from '../child-form/child-form.module';
