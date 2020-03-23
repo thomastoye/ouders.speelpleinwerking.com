@@ -1,29 +1,56 @@
 import { Injectable, Injector } from '@angular/core';
 import { DataAccessModule } from './data-access.module';
 import { Observable } from 'rxjs';
-import { Tenant } from '@hoepel.app/types';
-import { HttpClient } from '@angular/common/http';
-import { API_BASE_URL } from './injection-tokens';
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
+import { map } from 'rxjs/operators';
+import { ListPlaygrounds, ListPlaygrounds_tenants } from '../graphql/generated/ListPlaygrounds';
+import { TenantDetails, TenantDetailsVariables } from '../graphql/generated/TenantDetails';
+
+export type Playground = ListPlaygrounds_tenants;
 
 @Injectable({providedIn: DataAccessModule})
 export class PlaygroundsService {
-  private readonly apiBase: string;
 
   constructor(
-    private http: HttpClient,
-    private injector: Injector,
-  ) {
-    this.apiBase = this.injector.get(API_BASE_URL);
+    private apollo: Apollo,
+  ) {}
+
+  listPlaygrounds(): Observable<readonly Playground[]> {
+    return this.apollo.query<ListPlaygrounds>({
+      query: gql`query ListPlaygrounds {
+        tenants {
+          id
+          name
+          description
+          logoSmallUrl
+          address {
+            city
+          }
+          email
+        }
+      }`
+    }).pipe(map(res => res.data.tenants));
   }
 
-  listPlaygrounds(): Observable<ReadonlyArray<Tenant>> {
-    return this.http
-      .get<ReadonlyArray<Tenant>>(`${this.apiBase}/organisation`);
-  }
-
-  details(playgroundId: string): Observable<Tenant | null> {
-    return this.http.get<Tenant | null>(
-      `${this.apiBase}/organisation/${playgroundId}`
-    );
+  details(tenantId: string): Observable<Playground | null> {
+    return this.apollo.query<TenantDetails, TenantDetailsVariables>({
+      variables: {
+        tenantId,
+      },
+      query: gql`
+      query TenantDetails($tenantId:ID!) {
+        tenant(id:$tenantId) {
+          id
+          name
+          description
+          logoSmallUrl
+          address {
+            city
+          }
+          email
+        }
+      }`
+    }).pipe(map(res => res.data.tenant));
   }
 }

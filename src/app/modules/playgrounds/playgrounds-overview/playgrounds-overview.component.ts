@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlaygroundsService } from '../../data-access/playgrounds.service';
+import { PlaygroundsService, Playground } from '../../data-access/playgrounds.service';
 import { Observable } from 'rxjs';
 import { Tenant } from '@hoepel.app/types';
 
@@ -9,7 +9,7 @@ import { Tenant } from '@hoepel.app/types';
   styleUrls: ['./playgrounds-overview.component.scss']
 })
 export class PlaygroundsOverviewComponent implements OnInit {
-  playgrounds$: Observable<ReadonlyArray<Tenant>>;
+  playgrounds$: Observable<readonly Playground[]>;
 
   constructor(
     private playgroundService: PlaygroundsService

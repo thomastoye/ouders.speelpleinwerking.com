@@ -27,12 +27,19 @@
     "@hoepel.app/types": "1.1.13",
     "@mdi/angular-material": "^3.9.97",
     "@sentry/browser": "^4.6.6",
+    "apollo-angular": "^1.8.0",
     "core-js": "^2.6.11",
     "firebase": "^5.11.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "tslint-immutable": "^5.5.2",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "apollo-angular-link-http": "^1.9.0",
+    "apollo-link": "^1.2.11",
+    "apollo-client": "^2.6.0",
+    "apollo-cache-inmemory": "^1.6.0",
+    "graphql-tag": "^2.10.0",
+    "graphql": "^14.5.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.7",

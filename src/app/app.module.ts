@@ -20,6 +20,7 @@ import { ForgotPasswordComponent } from './modules/auth/forgot-password/forgot-p
 import { LoggedInGuard } from './logged-in.guard';
 import { HomeComponent } from './modules/home/home/home.component';
 import { HomeModule } from './modules/home/home.module';
+import { GraphQLModule } from './modules/graphql/graphql.module';
 
 Sentry.init({
   dsn: 'https://c71ef13256fa486bada4f4c609b3fbe5@sentry.io/1411998'
@@ -62,6 +63,7 @@ const routes: Routes = [
 
     HttpClientModule,
     MatIconModule,
+    GraphQLModule,
   ],
   providers: [{ provide: ErrorHandler, useClass: SentryErrorHandler }],
   bootstrap: [AppComponent]
