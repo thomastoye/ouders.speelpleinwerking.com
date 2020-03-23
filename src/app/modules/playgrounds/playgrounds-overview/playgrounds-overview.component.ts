@@ -19,7 +19,7 @@ export class PlaygroundsOverviewComponent implements OnInit {
     this.playgrounds$ = this.playgroundService.listPlaygrounds();
   }
 
-  sort(playgrounds: ReadonlyArray<Tenant>) {
+  sort(playgrounds: readonly Playground[]) {
     if (!playgrounds) {
       return [];
     }

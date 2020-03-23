@@ -51,6 +51,10 @@ export class PlaygroundDetailsComponent implements OnInit, OnDestroy {
         person: child,
       }
     }).afterClosed().subscribe((response: { readonly action: string, readonly person: Child }) => {
+      if (child.id == null) {
+        throw new Error('Tried to edit a child, but its id was null');
+      }
+
       if (response) {
         this.saving$.next(true);
         this.error$.next(false);

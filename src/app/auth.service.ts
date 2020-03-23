@@ -18,6 +18,10 @@ export class AuthService {
 
   register(email: string, password: string, displayName: string): Promise<void> {
     return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password).then(user => {
+      if (user.user == null) {
+        throw new Error('Error during registering: returned user was null');
+      }
+
       return user.user.updateProfile({ displayName });
     });
   }

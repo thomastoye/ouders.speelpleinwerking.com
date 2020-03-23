@@ -85,7 +85,7 @@ export class PersonFormComponent implements OnInit, OnChanges, OnDestroy {
    */
   onFormSubmit(): void {
     if (this.valid) {
-      this.formSubmit.next(this.result);
+      this.formSubmit.next(this.result!);
     }
   }
 
@@ -106,7 +106,7 @@ export class PersonFormComponent implements OnInit, OnChanges, OnDestroy {
       this.isValid.next(this.valid);
       this.isDirty.next(this.dirty);
 
-      if (this.valid) {
+      if (this.valid && this.result != null) {
         this.valueChanged.next(this.result);
       }
     });
