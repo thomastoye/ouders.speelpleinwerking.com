@@ -41,7 +41,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registreren', component: RegisterComponent },
   { path: 'wachtwoord-vergeten', component: ForgotPasswordComponent },
-  { path: 'speelpleinen', loadChildren: () => import('./modules/playgrounds/playgrounds.module').then(m => m.PlaygroundsModule), canActivate: [ LoggedInGuard ] },
+  {
+    path: 'speelpleinen', loadChildren: () =>
+      import('./modules/playgrounds/playgrounds.module').then(m => m.PlaygroundsModule), canActivate: [LoggedInGuard]
+  },
 ];
 
 @NgModule({

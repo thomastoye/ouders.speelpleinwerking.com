@@ -85,6 +85,7 @@ export class PersonFormComponent implements OnInit, OnChanges, OnDestroy {
    */
   onFormSubmit(): void {
     if (this.valid) {
+      // tslint:disable-next-line: no-non-null-assertion
       this.formSubmit.next(this.result!);
     }
   }
