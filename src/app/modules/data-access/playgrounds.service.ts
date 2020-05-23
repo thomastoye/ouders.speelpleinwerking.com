@@ -1,4 +1,4 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DataAccessModule } from './data-access.module';
 import { Observable } from 'rxjs';
 import { Apollo } from 'apollo-angular';
@@ -28,9 +28,11 @@ export class PlaygroundsService {
             city
           }
           email
+          enableOnlineRegistration
+          enableOnlineEnrollment
         }
       }`
-    }).pipe(map(res => res.data.tenants));
+    }).pipe(map(res => res.data.tenants.filter(tenant => tenant.enableOnlineRegistration)));
   }
 
   details(tenantId: string): Observable<Playground | null> {
@@ -49,6 +51,8 @@ export class PlaygroundsService {
             city
           }
           email
+          enableOnlineRegistration
+          enableOnlineEnrollment
         }
       }`
     }).pipe(map(res => res.data.tenant));

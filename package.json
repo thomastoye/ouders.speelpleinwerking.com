@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod && firebase deploy --project=speelpleinwerking-com"
+    "deploy": "ng build --prod && firebase deploy --project=speelpleinwerking-com",
+    "generate-ts-from-graphql": "npx apollo codegen:generate --target=typescript --endpoint=https://europe-west1-hoepel-app.cloudfunctions.net/api/graphql --tagName=gql --outputFlat=src/app/modules/graphql/generated"
   },
   "private": true,
   "dependencies": {

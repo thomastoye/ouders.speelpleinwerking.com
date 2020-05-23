@@ -19,6 +19,8 @@ export interface TenantDetails_tenant {
   logoSmallUrl: string | null;
   address: TenantDetails_tenant_address | null;
   email: string | null;
+  enableOnlineRegistration: boolean;
+  enableOnlineEnrollment: boolean;
 }
 
 export interface TenantDetails {

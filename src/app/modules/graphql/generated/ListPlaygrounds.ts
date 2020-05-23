@@ -19,6 +19,8 @@ export interface ListPlaygrounds_tenants {
   logoSmallUrl: string | null;
   address: ListPlaygrounds_tenants_address | null;
   email: string | null;
+  enableOnlineRegistration: boolean;
+  enableOnlineEnrollment: boolean;
 }
 
 export interface ListPlaygrounds {
