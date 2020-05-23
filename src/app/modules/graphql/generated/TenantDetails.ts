@@ -7,26 +7,26 @@
 // ====================================================
 
 export interface TenantDetails_tenant_address {
-  __typename: "TenantAddress";
-  city: string | null;
+  readonly __typename: "TenantAddress";
+  readonly city: string | null;
 }
 
 export interface TenantDetails_tenant {
-  __typename: "Tenant";
-  id: string;
-  name: string | null;
-  description: string | null;
-  logoSmallUrl: string | null;
-  address: TenantDetails_tenant_address | null;
-  email: string | null;
-  enableOnlineRegistration: boolean;
-  enableOnlineEnrollment: boolean;
+  readonly __typename: "Tenant";
+  readonly id: string;
+  readonly name: string | null;
+  readonly description: string | null;
+  readonly logoSmallUrl: string | null;
+  readonly address: TenantDetails_tenant_address | null;
+  readonly email: string | null;
+  readonly enableOnlineRegistration: boolean;
+  readonly enableOnlineEnrollment: boolean;
 }
 
 export interface TenantDetails {
-  tenant: TenantDetails_tenant | null;
+  readonly tenant: TenantDetails_tenant | null;
 }
 
 export interface TenantDetailsVariables {
-  tenantId: string;
+  readonly tenantId: string;
 }

@@ -7,22 +7,22 @@
 // ====================================================
 
 export interface ListPlaygrounds_tenants_address {
-  __typename: "TenantAddress";
-  city: string | null;
+  readonly __typename: "TenantAddress";
+  readonly city: string | null;
 }
 
 export interface ListPlaygrounds_tenants {
-  __typename: "Tenant";
-  id: string;
-  name: string | null;
-  description: string | null;
-  logoSmallUrl: string | null;
-  address: ListPlaygrounds_tenants_address | null;
-  email: string | null;
-  enableOnlineRegistration: boolean;
-  enableOnlineEnrollment: boolean;
+  readonly __typename: "Tenant";
+  readonly id: string;
+  readonly name: string | null;
+  readonly description: string | null;
+  readonly logoSmallUrl: string | null;
+  readonly address: ListPlaygrounds_tenants_address | null;
+  readonly email: string | null;
+  readonly enableOnlineRegistration: boolean;
+  readonly enableOnlineEnrollment: boolean;
 }
 
 export interface ListPlaygrounds {
-  tenants: ListPlaygrounds_tenants[];
+  readonly tenants: ReadonlyArray<ListPlaygrounds_tenants>;
 }

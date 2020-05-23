@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Tenant, Child } from '@hoepel.app/types';
 import { PersonFormDialogComponent } from '../../child-form/person-form-dialog/person-form-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ChildrenService } from '../../data-access/children.service';
+import { ChildrenService, ManagedChild } from '../../data-access/children.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class PlaygroundDetailsComponent implements OnInit, OnDestroy {
   playground: Tenant;
-  children: ReadonlyArray<Child>;
+  children: readonly ManagedChild[];
 
   refresh$ = new Subject<void>();
   saving$ = new Subject<boolean>();
@@ -29,7 +29,7 @@ export class PlaygroundDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.playground = this.route.snapshot.data.playground as Tenant;
-    this.children  = this.route.snapshot.data.children as ReadonlyArray<Child>;
+    this.children  = this.route.snapshot.data.children as readonly ManagedChild[];
 
     this.refresh$.pipe(takeUntil(this.destroy$)).subscribe(_ => {
       this.childrenService
@@ -42,37 +42,37 @@ export class PlaygroundDetailsComponent implements OnInit, OnDestroy {
     this.destroy$.next();
   }
 
-  editChild(child: Child) {
-    this.matDialog.open(PersonFormDialogComponent, {
-      panelClass: 'person-form-dialog',
-      data: {
-        action: 'edit',
-        type: 'child',
-        person: child,
-      }
-    }).afterClosed().subscribe((response: { readonly action: string, readonly person: Child }) => {
-      if (child.id == null) {
-        throw new Error('Tried to edit a child, but its id was null');
-      }
+  // editChild(child: Child) {
+  //   this.matDialog.open(PersonFormDialogComponent, {
+  //     panelClass: 'person-form-dialog',
+  //     data: {
+  //       action: 'edit',
+  //       type: 'child',
+  //       person: child,
+  //     }
+  //   }).afterClosed().subscribe((response: { readonly action: string, readonly person: Child }) => {
+  //     if (child.id == null) {
+  //       throw new Error('Tried to edit a child, but its id was null');
+  //     }
 
-      if (response) {
-        this.saving$.next(true);
-        this.error$.next(false);
+  //     if (response) {
+  //       this.saving$.next(true);
+  //       this.error$.next(false);
 
-        this.childrenService
-          .updateChildInPlayground(this.route.snapshot.params.playgroundId, child.id, response.person)
-          .subscribe(_ => {
-            this.refresh$.next();
-            this.saving$.next(false);
-          }, err => {
-            console.error('Error updating child', err);
-            this.error$.next(true);
-            this.refresh$.next();
-            this.saving$.next(false);
-          });
-      }
-    });
-  }
+  //       this.childrenService
+  //         .updateChildInPlayground(this.route.snapshot.params.playgroundId, child.id, response.person)
+  //         .subscribe(_ => {
+  //           this.refresh$.next();
+  //           this.saving$.next(false);
+  //         }, err => {
+  //           console.error('Error updating child', err);
+  //           this.error$.next(true);
+  //           this.refresh$.next();
+  //           this.saving$.next(false);
+  //         });
+  //     }
+  //   });
+  // }
 
   createChild() {
     this.matDialog.open(PersonFormDialogComponent, {
@@ -87,7 +87,7 @@ export class PlaygroundDetailsComponent implements OnInit, OnDestroy {
         this.error$.next(false);
 
         this.childrenService
-          .createChildInPlayground(this.route.snapshot.params.playgroundId, response.person)
+          .registerChildInPlayground(this.route.snapshot.params.playgroundId, response.person)
           .subscribe(_ => {
             this.refresh$.next();
             this.saving$.next(false);

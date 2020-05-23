@@ -3,7 +3,7 @@
     <mat-card-header>
       <div mat-card-avatar class="playground-header-image"
            *ngIf="playground.logoSmallUrl"
-           [ngStyle]="{ 'background-image': 'url(' + playground.logoSmallUrl + ')' }"
+          [ngStyle]="{ 'background-image': 'url(' + playground.logoSmallUrl + ')' }"
       ></div>
       <mat-card-title>{{ playground.name }}</mat-card-title>
       <mat-card-subtitle>{{ playground?.address?.city }}</mat-card-subtitle>
@@ -26,6 +26,10 @@
         heeft het speelplein de meest recente info en kunnen ze je kind snel inschrijven op de dag zelf.
       </p>
 
+      <p>
+        <em>Om kinderen aan te passen of te verwijderen, neem contact op met het speelplein.</em>
+      </p>
+
       <p *ngIf="children.length === 0">
         <em>Momenteel heb je nog geen geregistreerde kinderen bij dit speelplein.</em>
       </p>
@@ -34,7 +38,7 @@
         <mat-divider></mat-divider>
         <div *ngFor="let child of children">
           <mat-list-item>
-            <button mat-icon-button class="edit-button" (click)="editChild(child)"><mat-icon>edit</mat-icon></button>
+            <!-- <button mat-icon-button class="edit-button" (click)="editChild(child)"><mat-icon>edit</mat-icon></button> -->
             {{ child.firstName }} {{ child.lastName }}
           </mat-list-item>
           <mat-divider></mat-divider>

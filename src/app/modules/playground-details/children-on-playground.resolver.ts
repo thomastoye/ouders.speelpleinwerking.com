@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Child } from '@hoepel.app/types';
-import { ChildrenService } from '../data-access/children.service';
+import { ChildrenService, ManagedChild } from '../data-access/children.service';
 
 @Injectable()
-export class ChildrenOnPlaygroundResolver implements Resolve<ReadonlyArray<Child>> {
+export class ChildrenOnPlaygroundResolver implements Resolve<readonly ManagedChild[]> {
   constructor(
     private childrenService: ChildrenService,
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ReadonlyArray<Child>> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<readonly ManagedChild[]> {
     return this.childrenService.getChildrenForPlayground(route.params.playgroundId);
   }
 }
