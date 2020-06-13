@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { PossibleAttendancesForChild_parentPlatform_shiftsAvailable, PossibleAttendancesForChild_parentPlatform_shiftsAvailable_days_shifts } from '../../graphql/generated/PossibleAttendancesForChild';
+import {
+  PossibleAttendancesForChild_parentPlatform_shiftsAvailable,
+  PossibleAttendancesForChild_parentPlatform_shiftsAvailable_days_shifts
+} from '../../graphql/generated/PossibleAttendancesForChild';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectionListChange } from '@angular/material/list';
 

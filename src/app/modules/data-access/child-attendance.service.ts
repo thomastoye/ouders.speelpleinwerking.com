@@ -81,7 +81,10 @@ export class ChildAttendanceService {
     preferredBubbleName: string | null,
     shiftIds: readonly string[]
   ) {
-    return this.apollo.mutate<RegisterChildAttendanceIntention, RegisterChildAttendanceIntentionVariables>({
+    return this.apollo.mutate<
+      RegisterChildAttendanceIntention,
+      RegisterChildAttendanceIntentionVariables
+    >({
       mutation: gql`
         mutation  RegisterChildAttendanceIntention(
           $organisationId: ID!
@@ -117,7 +120,10 @@ export class ChildAttendanceService {
     year: number,
     weekNumber: number
   ) {
-    return this.apollo.mutate<UnregisterChildAttendanceIntention, UnregisterChildAttendanceIntentionVariables>({
+    return this.apollo.mutate<
+      UnregisterChildAttendanceIntention,
+      UnregisterChildAttendanceIntentionVariables
+    >({
       mutation: gql`
         mutation UnregisterChildAttendanceIntention(
           $organisationId: ID!
