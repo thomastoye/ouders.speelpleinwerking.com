@@ -8,8 +8,12 @@ import {
 } from '../graphql/generated/PossibleAttendancesForChild';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { RegisterChildAttendanceIntention, RegisterChildAttendanceIntentionVariables } from '../graphql/generated/RegisterChildAttendanceIntention';
-import { UnregisterChildAttendanceIntentionVariables, UnregisterChildAttendanceIntention } from '../graphql/generated/UnregisterChildAttendanceIntention';
+import {
+  RegisterChildAttendanceIntention, RegisterChildAttendanceIntentionVariables
+} from '../graphql/generated/RegisterChildAttendanceIntention';
+import {
+  UnregisterChildAttendanceIntentionVariables, UnregisterChildAttendanceIntention
+} from '../graphql/generated/UnregisterChildAttendanceIntention';
 
 export { PossibleAttendancesForChild };
 
