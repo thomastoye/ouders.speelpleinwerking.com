@@ -30,6 +30,7 @@ export class ChildrenService {
             id
             firstName
             lastName
+            onRegistrationWaitingList
           }
         }
       }`,

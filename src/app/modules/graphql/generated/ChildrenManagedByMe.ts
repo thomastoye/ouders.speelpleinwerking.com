@@ -11,6 +11,7 @@ export interface ChildrenManagedByMe_parentPlatform_childrenManagedByMe {
   readonly id: string;
   readonly firstName: string;
   readonly lastName: string;
+  readonly onRegistrationWaitingList: boolean;
 }
 
 export interface ChildrenManagedByMe_parentPlatform {
