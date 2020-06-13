@@ -1,0 +1,43 @@
+<div fxLayout="column" fxLayoutAlign="start center" class="wrapper">
+  <h1>Inschrijven</h1>
+
+  <p style="max-width: 700px; margin-bottom: 40px;">
+    <a *ngIf="organisationId$ | async; let organisationId" [routerLink]="['/speelpleinen', organisationId]">Terug naar speelplein</a>
+  </p>
+
+  <div fxLayout="column" fxLayoutAlign="start stretch" *ngIf="possibleAttendances$ | async as attendances; else loading">
+    <mat-card *ngFor="let week of attendances.parentPlatform.shiftsAvailable" style="margin-bottom: 30px; max-width: 700px;">
+      <mat-card-header>
+        <mat-card-title>{{ week.weekDescription }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p *ngIf="week.days.length === 1">
+          Voor deze week is er {{ week.days.length }} dag waarop je kan inschrijven.
+        </p>
+        <p *ngIf="week.days.length !== 1">
+          Voor deze week zijn er {{ week.days.length }} dagen waarop je kan inschrijven.
+        </p>
+
+        <p *ngIf="week.attendanceIntentionsForChild?.status === 'pending'">
+          Je hebt ingeschreven voor deze week. Het speelplein moet je inschrijving nog bevestigen. <strong>Door de Coronacrisis kan het zijn dat je inschrijving toch nog geweigerd wordt.</strong>
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions *ngIf="childId$ | async; let childId">
+        <button mat-button (click)="addAttendanceIntentionForWeek(childId, week)" [disabled]="week.attendanceIntentionsForChild !== null">
+          <mat-icon svgIcon="calendar"></mat-icon>
+          INSCHRIJVEN VOOR DEZE WEEK
+        </button>
+        <button mat-button color="warn" (click)="removePendingAttendanceIntention(childId, week.year, week.weekNumber)" *ngIf="week.attendanceIntentionsForChild?.status === 'pending'">
+          <mat-icon svgIcon="delete"></mat-icon>
+          VERWIJDEREN
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>

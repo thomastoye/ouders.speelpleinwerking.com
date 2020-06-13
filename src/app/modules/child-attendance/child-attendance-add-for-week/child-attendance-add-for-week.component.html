@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Kind inschrijven voor de week van {{ week.weekDescription }}</h1>
+<mat-dialog-content>
+  <p>
+    Je inschrijving is niet definitief. <strong>Door de Coronacrisis is het helaas mogelijk dat het speelplein je inschrijving nog weigert.</strong>
+  </p>
+
+  <div *ngIf="week.possibleBubbles != null && week.possibleBubbles.length !== 0">
+    <p>
+      <em>
+        Van de overheid moeten kinderen worden ingedeeld in <strong>"bubbels"</strong>, groepen van maximum 50 kinderen die geen contact met elkaar mogen hebben.
+        Je kan een voorkeur opgeven, maar het speelplein kan je kind elders indelen wanneer die bubbel al vol is of wanneer een ander bubbel beter past.
+      </em>
+    </p>
+    <mat-form-field style="width: 100%">
+      <mat-label>Voorkeursbubbel</mat-label>
+      <mat-select [(value)]="preferredBubbleName">
+        <mat-option [value]="null">
+          Geen voorkeur
+        </mat-option>
+        <mat-option *ngFor="let bubble of week.possibleBubbles" [value]="bubble.name">
+          {{bubble.name}} ({{ bubble.totalSpots }} plaatsen)
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div *ngFor="let day of week.days">
+    <h3>{{ day.dayFormatted }}</h3>
+
+    <mat-selection-list (selectionChange)="selectionChange($event)">
+      <mat-list-option *ngFor="let shift of day.shifts" [value]="shift">
+        <h3 matLine>
+          {{ shift.kind }} ({{ shift.price }})<span *ngIf="shift.description !== ''">: {{ shift.description }}</span>
+        </h3>
+        <p matLine>
+          <span>{{ shift.durationFormatted }}</span>
+          <span *ngIf="shift.location">, {{ shift.location }}</span>
+        </p>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close(null)">Sluiten</button>
+  <button mat-raised-button color="accent" (click)="submit()" [disabled]="selectedShifts.size === 0">
+    INSCHRIJVEN
+    <mat-icon svgIcon="send"></mat-icon>
+  </button>
+</mat-dialog-actions>

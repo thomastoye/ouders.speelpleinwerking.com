@@ -6,6 +6,12 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum ChildAttendanceIntentionStatus {
+  accepted = "accepted",
+  pending = "pending",
+  rejected = "rejected",
+}
+
 export interface ChildManagedByParentAddressInput {
   readonly street?: string | null;
   readonly number?: string | null;

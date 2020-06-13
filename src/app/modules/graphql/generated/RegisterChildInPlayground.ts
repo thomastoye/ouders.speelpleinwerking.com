@@ -9,7 +9,7 @@ import { ChildManagedByParentInput } from "./globalTypes";
 // ====================================================
 
 export interface RegisterChildInPlayground {
-  readonly registerChildFromParentPlatform: string;
+  readonly registerChildFromParentPlatform: string | null;
 }
 
 export interface RegisterChildInPlaygroundVariables {

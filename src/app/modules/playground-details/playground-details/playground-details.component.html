@@ -38,8 +38,16 @@
         <mat-divider></mat-divider>
         <div *ngFor="let child of children">
           <mat-list-item>
-            <!-- <button mat-icon-button class="edit-button" (click)="editChild(child)"><mat-icon>edit</mat-icon></button> -->
-            {{ child.firstName }} {{ child.lastName }}
+            <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%;">
+              <p>
+                {{ child.firstName }} {{ child.lastName }}
+              </p>
+
+              <a mat-button [routerLink]="['inschrijven', child.id]" *ngIf="playground.enableOnlineEnrollment">
+                <mat-icon>event</mat-icon>
+                INSCHRIJVEN
+              </a>
+            </div>
           </mat-list-item>
           <mat-divider></mat-divider>
         </div>

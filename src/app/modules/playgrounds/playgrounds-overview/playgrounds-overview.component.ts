@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaygroundsService, Playground } from '../../data-access/playgrounds.service';
 import { Observable } from 'rxjs';
-import { Tenant } from '@hoepel.app/types';
 
 @Component({
   selector: 'app-playgrounds-overview',

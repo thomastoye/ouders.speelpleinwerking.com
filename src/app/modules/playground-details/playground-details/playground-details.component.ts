@@ -42,38 +42,6 @@ export class PlaygroundDetailsComponent implements OnInit, OnDestroy {
     this.destroy$.next();
   }
 
-  // editChild(child: Child) {
-  //   this.matDialog.open(PersonFormDialogComponent, {
-  //     panelClass: 'person-form-dialog',
-  //     data: {
-  //       action: 'edit',
-  //       type: 'child',
-  //       person: child,
-  //     }
-  //   }).afterClosed().subscribe((response: { readonly action: string, readonly person: Child }) => {
-  //     if (child.id == null) {
-  //       throw new Error('Tried to edit a child, but its id was null');
-  //     }
-
-  //     if (response) {
-  //       this.saving$.next(true);
-  //       this.error$.next(false);
-
-  //       this.childrenService
-  //         .updateChildInPlayground(this.route.snapshot.params.playgroundId, child.id, response.person)
-  //         .subscribe(_ => {
-  //           this.refresh$.next();
-  //           this.saving$.next(false);
-  //         }, err => {
-  //           console.error('Error updating child', err);
-  //           this.error$.next(true);
-  //           this.refresh$.next();
-  //           this.saving$.next(false);
-  //         });
-  //     }
-  //   });
-  // }
-
   createChild() {
     this.matDialog.open(PersonFormDialogComponent, {
       panelClass: 'person-form-dialog',

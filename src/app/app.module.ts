@@ -13,7 +13,7 @@ import * as Sentry from '@sentry/browser';
 import { NavModule } from './modules/nav/nav.module';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { ForgotPasswordComponent } from './modules/auth/forgot-password/forgot-password.component';
@@ -53,7 +53,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     BrowserAnimationsModule,
     LayoutModule,
     FlexLayoutModule,

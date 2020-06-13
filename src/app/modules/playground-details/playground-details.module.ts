@@ -22,6 +22,9 @@ const routes: Routes = [
       children: ChildrenOnPlaygroundResolver,
     }
   },
+  {
+    path: 'inschrijven', loadChildren: () => import('../child-attendance/child-attendance.module').then(m => m.ChildAttendanceModule)
+  }
 ];
 
 @NgModule({
