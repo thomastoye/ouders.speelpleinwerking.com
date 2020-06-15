@@ -32,7 +32,6 @@ export class ChildAttendanceAddForWeekComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
   }
 
 

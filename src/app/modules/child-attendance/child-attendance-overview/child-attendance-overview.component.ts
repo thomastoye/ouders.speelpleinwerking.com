@@ -127,8 +127,6 @@ export class ChildAttendanceOverviewComponent implements OnInit, OnDestroy {
       throw new Error(`No organisation id found when trying to remove pending child attendance intention`);
     }
 
-    console.log('TODO');
-
     this.childAttendanceService.unregisterAttendanceIntention(organisationId, childId, year, weekNumber).subscribe(next => {
       this.refresh$.next();
       this.matSnack.open('Verwijderd!', undefined, { duration: 5000 });
