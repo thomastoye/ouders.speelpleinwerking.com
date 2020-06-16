@@ -48,4 +48,5 @@ Thumbs.db
 .firebaserc
 .firebase/
 firebase-debug.log
+src/app/modules/graphql/generated
 

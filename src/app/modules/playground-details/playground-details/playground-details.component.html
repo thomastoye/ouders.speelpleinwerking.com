@@ -43,7 +43,7 @@
                 {{ child.firstName }} {{ child.lastName }}
               </p>
 
-              <a mat-button [routerLink]="['inschrijven', child.id]" *ngIf="playground.enableOnlineEnrollment && !child.onRegistrationWaitingList">
+              <a mat-button [routerLink]="['inschrijven', child.id]" *ngIf="playground.enableOnlineEnrollment">
                 <mat-icon>event</mat-icon>
                 INSCHRIJVEN
               </a>
