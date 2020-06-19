@@ -55,7 +55,7 @@
   </div>
 
   <div class="mb-16" *ngIf="showField('birthDate') || showField('bankAccount') || showField('yearStarted') || showField('active') || showField('gender')">
-    <span class="mat-title m-0">Informatie</span>
+    <span class="mat-title m-0">Geboortedatum</span>
   </div>
 
   <div formGroupName="birthDate" *ngIf="showField('birthDate')">
@@ -117,11 +117,11 @@
         </mat-option>
         <mat-option value="male">
           <mat-icon class="secondary-text" svgIcon="gender-male"></mat-icon>
-          Man
+          Mannelijk
         </mat-option>
         <mat-option value="female">
           <mat-icon class="secondary-text" svgIcon="gender-female"></mat-icon>
-          Vrouw
+          Vrouwelijk
         </mat-option>
         <mat-option value="other">
           <mat-icon class="secondary-text" svgIcon="gender-transgender"></mat-icon>
@@ -198,7 +198,7 @@
   </div>
 
   <div class="mb-16" *ngIf="showField('remarks')">
-    <span class="mat-title m-0">Opmerkingen</span>
+    <span class="mat-title m-0">Opmerkingen of dingen waar we rekening mee moeten houden?</span>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="start start" *ngIf="showField('remarks')">
