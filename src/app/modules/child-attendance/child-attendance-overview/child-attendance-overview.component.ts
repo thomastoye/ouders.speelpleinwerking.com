@@ -5,7 +5,7 @@ import {
 } from '../../data-access/child-attendance.service';
 import { Subject, Observable, of, combineLatest } from 'rxjs';
 import { takeUntil, switchMap, map, startWith } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   PossibleAttendancesForChild_parentPlatform_shiftsAvailable,
   PossibleAttendancesForChild_parentPlatform_shiftsAvailable_attendanceIntentionsForChild
@@ -48,6 +48,7 @@ export class ChildAttendanceOverviewComponent implements OnInit, OnDestroy {
   constructor(
     private childAttendanceService: ChildAttendanceService,
     private route: ActivatedRoute,
+    private router: Router,
     private matDialog: MatDialog,
     private matSnack: MatSnackBar,
   ) { }
@@ -118,6 +119,7 @@ export class ChildAttendanceOverviewComponent implements OnInit, OnDestroy {
         this.matSnack.open('Inschrijving toegevoegd!', undefined, { duration: 5000 });
       }, error => {
         this.matSnack.open('Kon inschrijving niet toevoegen... Probeer opnieuw', undefined, { duration: 5000 });
+        this.router.navigate(['/speelpleinen', organisationId]);
         console.error('Error when adding child attendance intention', error);
         this.refresh$.next();
       });
