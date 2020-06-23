@@ -17,7 +17,6 @@ export class ChildAttendanceDetailsDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: PossibleAttendancesForChild_parentPlatform_shiftsAvailable_attendanceIntentionsForChild,
   ) {
-    console.log(data)
 
     this.shifts = [...data.shifts]
       .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
