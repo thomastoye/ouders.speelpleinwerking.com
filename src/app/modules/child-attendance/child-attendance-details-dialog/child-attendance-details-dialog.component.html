@@ -1,5 +1,9 @@
 <h1 mat-dialog-title>Inschrijving</h1>
 <div mat-dialog-content>
+  <p *ngIf="data.status === 'accepted'">
+    Je inschrijving voor deze week is aanvaard. Je kan komen spelen!
+  </p>
+
   <p *ngIf="data.assignedBubbleName">
     Deze week is je kind ingedeeld in de bubbel <strong>{{ data.assignedBubbleName }}</strong>.
   </p>
