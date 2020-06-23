@@ -12,7 +12,7 @@ import { DayDate } from '@hoepel.app/types';
   styleUrls: ['./child-attendance-details-dialog.component.sass']
 })
 export class ChildAttendanceDetailsDialogComponent implements OnInit {
-  shifts: readonly PossibleAttendancesForChild_parentPlatform_shiftsAvailable_attendanceIntentionsForChild_shifts[]
+  shifts: readonly PossibleAttendancesForChild_parentPlatform_shiftsAvailable_attendanceIntentionsForChild_shifts[];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: PossibleAttendancesForChild_parentPlatform_shiftsAvailable_attendanceIntentionsForChild,
@@ -26,6 +26,6 @@ export class ChildAttendanceDetailsDialogComponent implements OnInit {
   }
 
   displayDayDate(dayId: string): string {
-    return DayDate.fromDayId(dayId).toDDMMYYYY()
+    return DayDate.fromDayId(dayId).toDDMMYYYY();
   }
 }

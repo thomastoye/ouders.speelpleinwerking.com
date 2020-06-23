@@ -6,7 +6,10 @@ import {
 import { Subject, Observable, of, combineLatest } from 'rxjs';
 import { takeUntil, switchMap, map, startWith } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { PossibleAttendancesForChild_parentPlatform_shiftsAvailable, PossibleAttendancesForChild_parentPlatform_shiftsAvailable_attendanceIntentionsForChild } from '../../graphql/generated/PossibleAttendancesForChild';
+import {
+  PossibleAttendancesForChild_parentPlatform_shiftsAvailable,
+  PossibleAttendancesForChild_parentPlatform_shiftsAvailable_attendanceIntentionsForChild
+} from '../../graphql/generated/PossibleAttendancesForChild';
 import { MatDialog } from '@angular/material/dialog';
 import {
   ChildAttendanceAddForWeekComponent,

@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChildAttendanceDetailsDialogComponent } from './child-attendance-details-dialog.component';
 
 describe('ChildAttendanceDetailsDialogComponent', () => {
-  let component: ChildAttendanceDetailsDialogComponent;
-  let fixture: ComponentFixture<ChildAttendanceDetailsDialogComponent>;
+  const component: ChildAttendanceDetailsDialogComponent;
+  const fixture: ComponentFixture<ChildAttendanceDetailsDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
