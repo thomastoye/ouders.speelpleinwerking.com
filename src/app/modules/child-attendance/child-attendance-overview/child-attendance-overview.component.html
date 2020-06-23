@@ -12,22 +12,35 @@
       </mat-card-header>
 
       <mat-card-content>
-        <p *ngIf="week.days.length === 1">
+        <p *ngIf="week.days.length === 1 && week.attendanceIntentionsForChild == null">
           Voor deze week is er {{ week.days.length }} dag waarop je kan inschrijven.
         </p>
-        <p *ngIf="week.days.length !== 1">
+        <p *ngIf="week.days.length !== 1 && week.attendanceIntentionsForChild == null">
           Voor deze week zijn er {{ week.days.length }} dagen waarop je kan inschrijven.
         </p>
 
-        <p *ngIf="week.attendanceIntentionsForChild?.status === 'pending'">
+        <p *ngIf="week.attendanceIntentionsForChild?.assignedBubbleName; let assignedBubbleName">
+          Deze week zit je kind in de bubbel <em>{{ assignedBubbleName }}</em>.
+        </p>
+        <p *ngIf="week.attendanceIntentionsForChild?.status === 'rejected'">
+          <strong>
+            Helaas, voor deze week is je inschrijving geweigerd... Je kind kan niet aanwezig zijn.
+          </strong>
+        </p>
+
+        <p *ngIf="week.attendanceIntentionsForChild?.status === 'pending' || week.attendanceIntentionsForChild?.status === 'child_on_registration_waiting_list'">
           Je hebt ingeschreven voor deze week. Het speelplein moet je inschrijving nog bevestigen. <strong>Door de Coronacrisis kan het zijn dat je inschrijving toch nog geweigerd wordt.</strong>
         </p>
       </mat-card-content>
 
       <mat-card-actions *ngIf="childId$ | async; let childId">
-        <button mat-button (click)="addAttendanceIntentionForWeek(childId, week)" [disabled]="week.attendanceIntentionsForChild !== null">
+        <button mat-button *ngIf="week.attendanceIntentionsForChild == null" (click)="addAttendanceIntentionForWeek(childId, week)">
           <mat-icon svgIcon="calendar"></mat-icon>
           INSCHRIJVEN VOOR DEZE WEEK
+        </button>
+        <button mat-button *ngIf="week.attendanceIntentionsForChild?.status === 'accepted'" (click)="showAttendanceDetails(week.attendanceIntentionsForChild)">
+          <mat-icon svgIcon="account-details"></mat-icon>
+          INSCHRIJVING BEKIJKEN
         </button>
         <button mat-button color="warn" (click)="removePendingAttendanceIntention(childId, week.year, week.weekNumber)" *ngIf="week.attendanceIntentionsForChild?.status === 'pending'">
           <mat-icon svgIcon="delete"></mat-icon>

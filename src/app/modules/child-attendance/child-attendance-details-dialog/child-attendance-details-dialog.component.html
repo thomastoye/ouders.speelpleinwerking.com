@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Inschrijving</h1>
+<div mat-dialog-content>
+  <p *ngIf="data.assignedBubbleName">
+    Deze week is je kind ingedeeld in de bubbel <strong>{{ data.assignedBubbleName }}</strong>.
+  </p>
+
+  <ul>
+    <li *ngFor="let shift of shifts">
+      {{ displayDayDate(shift.date) }} {{ shift.kind }} ({{ shift.durationFormatted }})
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Sluiten</button>
+</div>

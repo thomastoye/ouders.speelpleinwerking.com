@@ -6,7 +6,7 @@ import {
 import { Subject, Observable, of, combineLatest } from 'rxjs';
 import { takeUntil, switchMap, map, startWith } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { PossibleAttendancesForChild_parentPlatform_shiftsAvailable } from '../../graphql/generated/PossibleAttendancesForChild';
+import { PossibleAttendancesForChild_parentPlatform_shiftsAvailable, PossibleAttendancesForChild_parentPlatform_shiftsAvailable_attendanceIntentionsForChild } from '../../graphql/generated/PossibleAttendancesForChild';
 import { MatDialog } from '@angular/material/dialog';
 import {
   ChildAttendanceAddForWeekComponent,
@@ -14,6 +14,7 @@ import {
   ChildAttendanceAddForWeekReturn,
 } from '../child-attendance-add-for-week/child-attendance-add-for-week.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ChildAttendanceDetailsDialogComponent } from '../child-attendance-details-dialog/child-attendance-details-dialog.component';
 
 interface ShiftDetails {
   readonly id: string;
@@ -46,7 +47,7 @@ export class ChildAttendanceOverviewComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private matDialog: MatDialog,
     private matSnack: MatSnackBar,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.organisationId$ = this.route.paramMap.pipe(
@@ -113,9 +114,9 @@ export class ChildAttendanceOverviewComponent implements OnInit, OnDestroy {
         this.refresh$.next();
         this.matSnack.open('Inschrijving toegevoegd!', undefined, { duration: 5000 });
       }, error => {
-          this.matSnack.open('Kon inschrijving niet toevoegen... Probeer opnieuw', undefined, { duration: 5000 });
-          console.error('Error when adding child attendance intention', error);
-          this.refresh$.next();
+        this.matSnack.open('Kon inschrijving niet toevoegen... Probeer opnieuw', undefined, { duration: 5000 });
+        console.error('Error when adding child attendance intention', error);
+        this.refresh$.next();
       });
     });
   }
@@ -134,6 +135,12 @@ export class ChildAttendanceOverviewComponent implements OnInit, OnDestroy {
       this.matSnack.open('Kon inschrijving niet verwijderen... Probeer opnieuw');
       console.error('Error when removing child attendance intention', error);
       this.refresh$.next();
+    });
+  }
+
+  showAttendanceDetails(details: PossibleAttendancesForChild_parentPlatform_shiftsAvailable_attendanceIntentionsForChild) {
+    this.matDialog.open(ChildAttendanceDetailsDialogComponent, {
+      data: details
     });
   }
 }

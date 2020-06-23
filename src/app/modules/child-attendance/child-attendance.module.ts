@@ -16,7 +16,7 @@ import { ChildAttendanceAddForWeekComponent } from './child-attendance-add-for-w
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { ChildAttendanceDetailsDialogComponent } from './child-attendance-details-dialog/child-attendance-details-dialog.component';
 
 const routes: Routes = [
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ChildAttendanceOverviewComponent, ChildAttendanceAddForWeekComponent],
+  declarations: [ChildAttendanceOverviewComponent, ChildAttendanceAddForWeekComponent, ChildAttendanceDetailsDialogComponent],
   imports: [
     CommonModule,
     DataAccessModule,
@@ -46,6 +46,7 @@ const routes: Routes = [
   ],
   entryComponents: [
     ChildAttendanceAddForWeekComponent,
+    ChildAttendanceDetailsDialogComponent,
   ]
 })
 export class ChildAttendanceModule { }

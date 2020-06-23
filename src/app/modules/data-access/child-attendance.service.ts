@@ -48,8 +48,17 @@ export class ChildAttendanceService {
                 childId
                 status
                 preferredBubbleName
+                assignedBubbleName
                 shifts {
                   id
+                  date
+                  description
+                  location
+                  start
+                  end
+                  durationFormatted
+                  kind
+                  price
                 }
               }
 
